@@ -1,5 +1,5 @@
 # Traceability Visualisation
-This note summarizes the three most common **traceability visualisation techniques**: 
+This note summarizes the three most common traceability visualisation techniques: 
 - Matrices 
 - Corss-References 
 - Graphs
@@ -22,6 +22,7 @@ However, using a richer set of shapes and colors, traceability matrices can prov
 - it is actually hard to trace artifacts (to follow links recursively
 
 ## Traceability Cross-References
+![](../img/png/traceability-cross-references.png)
 ## Traceability Graphs
 
 ## References
