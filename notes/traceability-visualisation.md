@@ -5,12 +5,21 @@ This note summarizes the three most common **traceability visualisation techniqu
 - Graphs
 
 ## Traceability Matrices
+![](../img/png/traceability-matrix.png)
+
 Traceability Matrices visualise the traceability of *n* traced artifacts in form of a 2D grid.
 This grid has at most *n²* cells.
 In its most simplistic form, the coordinate *(x,y)* denotes the existence of a traceability link between artifacts x and y with a bullet.
 However, using a richer set of shapes and colors, traceability matrices can provide additional information regarding the link's nature.
 
-![](../img/png/traceability-matrix.png)
+### Pros
+- easy to understand (for simple scenarios)
+- amateur friendly 
+
+### Cons
+- bloated for whole projects with thousands of artifacts (only usable for excerpts)
+- it is difficult (impossibble) to visualise links between more than 2 artifacts
+- it is actually hard to trace artifacts (to follow links recursively
 
 ## Traceability Cross-References
 ## Traceability Graphs
