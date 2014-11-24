@@ -24,8 +24,20 @@ However, using a richer set of shapes and colors, traceability matrices can prov
 ## Traceability Cross-References
 ![](../img/png/traceability-cross-references.png)
 
+Traceability Cross-References visualise traceability links in tabular (or textual) form.
+Each artifact has its own table, containing all traceability relations it is part of.
+Cross-Reference tables can vary the amount of depicted information.
+The smallest common denominator are hyperlinks to linked artifacts.
+Such tables can easily be aggregated to create a big table containg all traceability links of interest.
+
+### Pros
+### Cons
+
 ## Traceability Graphs
-![](../img/png/traceability-cross-graph.png)
+![](../img/png/traceability-graph.png)
+
+### Pros
+### Cons
 
 ## References
 1. [A survey of traceability in requirements engineering and model-driven development](http://dl.acm.org/citation.cfm?id=1861287), Stefan Winkler, Jens Pilgrim
