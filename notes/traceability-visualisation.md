@@ -8,8 +8,9 @@ This note summarizes the three most common **traceability visualisation techniqu
 Traceability Matrices visualise the traceability of *n* traced artifacts in form of a 2D grid.
 This grid has at most *n²* cells.
 In its most simplistic form, the coordinate *(x,y)* denotes the existence of a traceability link between artifacts x and y with a bullet.
-However, using a richer set of shapes, traceability matrices can provide additional information regarding the link's nature.
+However, using a richer set of shapes and colors, traceability matrices can provide additional information regarding the link's nature.
 
+![](../img/png/traceability-matrix.png)
 
 ## Traceability Cross-References
 ## Traceability Graphs
