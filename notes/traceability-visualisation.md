@@ -1,7 +1,7 @@
 # Traceability Visualisation
 This note summarizes the 3 most common traceability visualisation techniques: 
-- Matrices 
-- Corss-References 
+- [Matrices](#traceability-matrices)
+- Cross-References 
 - Graphs
 
 ## Traceability Matrices
