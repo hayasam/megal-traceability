@@ -1,5 +1,5 @@
 # Traceability Visualisation
-This note summarizes the three most common traceability visualisation techniques: 
+This note summarizes the 3 most common traceability visualisation techniques: 
 - Matrices 
 - Corss-References 
 - Graphs
@@ -19,7 +19,7 @@ However, using a richer set of shapes and colors, traceability matrices can prov
 ### Cons
 - bloated for whole projects with thousands of artifacts (only usable for excerpts)
 - it is difficult (impossibble) to visualise links between more than 2 artifacts
-- it is actually hard to trace artifacts (to follow links recursively
+- it is actually hard to trace artifacts (to follow links recursively)
 
 ## Traceability Cross-References
 ![](../img/png/traceability-cross-references.png)
@@ -27,14 +27,23 @@ However, using a richer set of shapes and colors, traceability matrices can prov
 Traceability Cross-References visualise traceability links in tabular (or textual) form.
 Each artifact has its own table, containing all traceability relations it is part of.
 Cross-Reference tables can vary the amount of depicted information.
-The smallest common denominator are hyperlinks to linked artifacts.
-Such tables can easily be aggregated to create a big table containg all traceability links of interest.
+The smallest common denominator are the references to linked artifacts.
+Such references can be implemented as hyperlinks.
+This way one can follow traces in any direction.
+
+Cross-Reference tables can easily be aggregated to create a big table containg all traceability links of interest.
 
 ### Pros
+- navigation through out a project is possible
+- allows traceabiltiy links between more than 2 artifacts
+
 ### Cons
+- focus is on one artifact 
 
 ## Traceability Graphs
 ![](../img/png/traceability-graph.png)
+
+
 
 ### Pros
 ### Cons
