@@ -45,6 +45,8 @@ Cross-Reference tables can easily be aggregated to create a big table containg a
 
 Traceability Graphs visualise traceability links as edges and artifacts as nodes.
 This a approach seems intuitive for model centric environments.
+By using a rich set of visual notation (colors, dashed edges, differently shaped connectors and nodes) graphs can achieve a high degree of expressiveness.
+However, graphs tend to be hard to read, if more than the essential relations (of interest) are depicted.
 
 ### Pros
 - navigation through out a project is possible
