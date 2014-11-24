@@ -23,7 +23,9 @@ However, using a richer set of shapes and colors, traceability matrices can prov
 
 ## Traceability Cross-References
 ![](../img/png/traceability-cross-references.png)
+
 ## Traceability Graphs
+![](../img/png/traceability-cross-graph.png)
 
 ## References
 1. [A survey of traceability in requirements engineering and model-driven development](http://dl.acm.org/citation.cfm?id=1861287), Stefan Winkler, Jens Pilgrim
