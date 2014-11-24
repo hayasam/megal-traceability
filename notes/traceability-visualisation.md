@@ -1,7 +1,7 @@
 # Traceability Visualisation
 This note summarizes the 3 most common traceability visualisation techniques: 
 - [Traceability Matrices](#traceability-matrices)
-- [Traceability Cross-References ](#traceability-cross---references)
+- [Traceability Cross-References ](#traceability-cross-references)
 - [Traceability Graphs](#traceability-graphs)
 
 ## Traceability Matrices
@@ -14,7 +14,7 @@ However, using a richer set of shapes and colors, traceability matrices can prov
 
 ### Pros
 - easy to understand (for simple scenarios)
-- amateur friendly 
+- intuitive for non-technical users
 
 ### Cons
 - bloated for whole projects with thousands of artifacts (only usable for excerpts)
@@ -43,10 +43,16 @@ Cross-Reference tables can easily be aggregated to create a big table containg a
 ## Traceability Graphs
 ![](../img/png/traceability-graph.png)
 
-
+Traceability Graphs visualise traceability links as edges and artifacts as nodes.
+This a approach seems intuitive for model centric environments.
 
 ### Pros
+- navigation through out a project is possible
+- allows traceabiltiy links between more than 2 artifacts
+
 ### Cons
+- bloated for whole projects with thousands of artifacts (only usable for excerpts)
+- not intuitive for non-technical users
 
 ## References
 1. [A survey of traceability in requirements engineering and model-driven development](http://dl.acm.org/citation.cfm?id=1861287), Stefan Winkler, Jens Pilgrim
