@@ -1,0 +1,9 @@
+model Test
+import Prelude
+
+X : Artifact
+Y : Artifact
+X correspondsTo Y
+
+X = "workspace:/megaltest/X.txt"
+Y = "workspace:/megaltest/Y.txt"

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Megaltest
+Bundle-SymbolicName: megaltest
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: megaltest.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.softlang.megal.language;bundle-version="1.0.0",
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore,
+ org.softlang.megal
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
