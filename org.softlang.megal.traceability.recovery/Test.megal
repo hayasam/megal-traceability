@@ -1,0 +1,9 @@
+model Test
+import Prelude
+
+X : Artifact
+Y : Artifact
+X correspondsTo Y
+
+X = "workspace:/org.softlang.megal.traceability.recovery/X.txt"
+Y = "workspace:/org.softlang.megal.traceability.recovery/Y.txt"

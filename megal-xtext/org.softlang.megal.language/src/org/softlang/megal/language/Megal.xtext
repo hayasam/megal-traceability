@@ -14,8 +14,7 @@ PrefixAnnotation returns Annotation:
 	'@' key=QID (value=STRING)?;
 
 ShowNameAnnotation returns Annotation:
-	'[' value=STRING ']';
-	
+	'[' value=STRING ']';	
 
 Link:
 	annotations+=PrefixAnnotation*

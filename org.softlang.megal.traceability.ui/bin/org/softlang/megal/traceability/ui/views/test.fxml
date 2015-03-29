@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.*?>
@@ -7,45 +9,73 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" maxHeight="Infinity" maxWidth="Infinity">
+<BorderPane maxHeight="Infinity" maxWidth="Infinity" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
 
 	<top>
-		<VBox id="vbox">
-		   <MenuBar fx:id="menuBar" >
-		      <menus>
-		         <Menu text="File">
-		            <items>
-		               <MenuItem text="New"/>
-		               <MenuItem text="Open"/>
-		               <MenuItem text="Save"/>
-		               <MenuItem text="Save As"/>
-		               <SeparatorMenuItem />
-		               <MenuItem text="Exit"/>
-		            </items>
-		         </Menu>
-		         <Menu text="Edit">
-		            <items>
-		               <MenuItem text="Copy"/>
-		               <MenuItem text="Cut"/>
-		               <MenuItem text="Paste"/>
-		            </items>
-		         </Menu>
-		         <Menu text="Help">
-		            <items>
-		               <MenuItem text="Search" disable="true"/>
-		               <MenuItem text="Online Manual" visible="false"/>
-		               <SeparatorMenuItem />
-		               <MenuItem text="About" />
-		            </items>
-		         </Menu>
-		      </menus>
-		   </MenuBar>
-		</VBox>
+		<VBox id="vbox" />
 	</top>
 
 	<center>
-		<fx:include source="foo.fxml"/>
+		<fx:include source="foo.fxml" />
 	</center>
+   <bottom>
+      <TitledPane animated="false" text="untitled" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+         		   <MenuBar fx:id="menuBar" prefHeight="29.0" prefWidth="202.0">
+         		      <menus>
+         		         <Menu text="File">
+         		            <items>
+         		               <MenuItem text="New" />
+         		               <MenuItem text="Open" />
+         		               <MenuItem text="Save" />
+         		               <MenuItem text="Save As" />
+         		               <SeparatorMenuItem />
+         		               <MenuItem text="Exit" />
+         		            </items>
+         		         </Menu>
+         		         <Menu text="Edit">
+         		            <items>
+         		               <MenuItem text="Copy" />
+         		               <MenuItem text="Cut" />
+         		               <MenuItem text="Paste" />
+         		            </items>
+         		         </Menu>
+         		         <Menu text="Help">
+         		            <items>
+         		               <MenuItem disable="true" text="Search" />
+         		               <MenuItem text="Online Manual" visible="false" />
+         		               <SeparatorMenuItem />
+         		               <MenuItem text="About" />
+         		            </items>
+         		         </Menu>
+         		      </menus>
+         		   </MenuBar>
+                  <Accordion layoutX="-1.0" layoutY="29.0">
+                    <panes>
+                      <TitledPane animated="false" text="untitled 1">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </TitledPane>
+                      <TitledPane animated="false" text="untitled 2">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </TitledPane>
+                      <TitledPane animated="false" text="untitled 3">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </bottom>
 	
 
 </BorderPane>
