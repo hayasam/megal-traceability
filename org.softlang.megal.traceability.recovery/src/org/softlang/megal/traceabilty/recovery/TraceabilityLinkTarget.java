@@ -3,7 +3,6 @@ package org.softlang.megal.traceabilty.recovery;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 
 import org.softlang.megal.Entity;
 
@@ -16,13 +15,20 @@ public class TraceabilityLinkTarget {
 
 	static private String resolveURI (String uri) {
 		
-		if (uri.startsWith("workspace:/")) {
+		if (uri.startsWith("workspace:")) {
 			
-			uri = new File("..").toURI() + uri.substring("workspace:/".length());
-			
-			
-//			uri = new File(uri).getAbsolutePath();
-						
+			try {
+				
+				String wsURI = "" + new File("..").getCanonicalPath();
+				
+				uri = wsURI + uri.substring("workspace:".length());
+				
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+				
+			}
+									
 		}
 				
 		return uri;

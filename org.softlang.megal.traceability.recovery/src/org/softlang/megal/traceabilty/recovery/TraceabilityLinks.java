@@ -1,10 +1,7 @@
 package org.softlang.megal.traceabilty.recovery;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
 import org.eclipse.emf.ecore.resource.Resource;
 import org.softlang.megal.Entity;
 import org.softlang.megal.Link;
@@ -21,7 +18,13 @@ import com.google.common.collect.FluentIterable;
  */
 public class TraceabilityLinks {
 
-	static public List<TraceabilityLink> allDeclaredTraceabilityLinks (Relationship r) {
+	/**
+	 * Searches a given MegaL Relationship for all declared traceability links, that is defined entities with bound artifacts.
+	 * 
+	 * @param r
+	 * @return
+	 */
+	static public List<TraceabilityLink> allDeclaredLinks (Relationship r) {
 		
 		List<TraceabilityLink> result = new ArrayList<TraceabilityLink>();
 		
@@ -48,13 +51,19 @@ public class TraceabilityLinks {
 		
 	}
 	
-	static public List<TraceabilityLink> allDeclaredTraceabilityLinks (Megamodel m) {
+	/**
+	 * Searches a given MegaL Megamodel for all declared traceability links, that is defined entities with bound artifacts.
+	 * 
+	 * @param m
+	 * @return
+	 */
+	static public List<TraceabilityLink> allDeclaredLinks (Megamodel m) {
 		
 		List<TraceabilityLink> result = new ArrayList<TraceabilityLink>();
 		
 		for (Relationship r : FluentIterable.from(m.getDeclarations()).filter(Relationship.class)) {
 			
-			result.addAll(allDeclaredTraceabilityLinks(r));
+			result.addAll(allDeclaredLinks(r));
 			
 		}
 		
@@ -62,17 +71,29 @@ public class TraceabilityLinks {
 		
 	}
 	
-	static public List<TraceabilityLink> allDeclaredTraceabilityLinks (Resource r) {
+	/**
+	 * Searches a given Ecore resource for all declared traceability links, that is defined entities with bound artifacts.
+	 * 
+	 * @param r
+	 * @return
+	 */
+	static public List<TraceabilityLink> allDeclaredLinks (Resource r) {
 		
 		List<TraceabilityLink> result = new ArrayList<TraceabilityLink>();
 		
 		for (Megamodel m : FluentIterable.from(r.getContents()).filter(Megamodel.class)) {
 			
-			result.addAll(allDeclaredTraceabilityLinks(m));
+			result.addAll(allDeclaredLinks(m));
 			
 		}
 		
 		return result;
+		
+	}
+	
+	static public List<TraceabilityLink> inferFragmentLinks (List<TraceabilityLink> tlinks) {
+		
+		return tlinks;
 		
 	}
 	

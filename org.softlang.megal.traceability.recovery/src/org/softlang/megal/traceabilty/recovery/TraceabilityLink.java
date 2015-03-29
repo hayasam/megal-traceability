@@ -1,7 +1,5 @@
 package org.softlang.megal.traceabilty.recovery;
 
-import org.softlang.megal.Entity;
-
 /**
  * 
  * @author maxmeffert

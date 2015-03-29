@@ -1,0 +1,21 @@
+
+// (a) define "top-level" traceability link 
+
+Foo : Artifact
+Foo = "/path/to/foo.ext"
+
+Bar : Artifact
+Bar = "/path/to/bar.ext"
+
+Foo correspondsTo Bar
+
+// (b) define fragment traceability link "inference rules"
+
+Lala : Fragment
+Lala fragmentOf Foo
+
+Lulu : Fragment
+Lulu fragmentOf Bar
+
+Lala correspondsTo Lulu
+

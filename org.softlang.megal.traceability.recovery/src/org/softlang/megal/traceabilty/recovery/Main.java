@@ -1,5 +1,6 @@
 package org.softlang.megal.traceabilty.recovery;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import org.softlang.megal.language.MegalStandaloneSetup;
  */
 public class Main {
 
-	static private String FILE = "Test.megal";
+	static private String FILE = "./testfiles/Test.megal";
 	
 	static private void setupMegaL () {
 		
@@ -36,8 +37,10 @@ public class Main {
 					public EFactory getEFactory() {
 						return new MegalFactoryEval();
 					}
+					
 				});
 
+		@SuppressWarnings("unused")
 		MegalPackage pack = MegalPackage.eINSTANCE;
 
 		MegalStandaloneSetup.doSetup();
@@ -47,11 +50,11 @@ public class Main {
 	static public void main (String[] args) throws IOException {
 		
 		setupMegaL();
-		
+				
 		ResourceSet impl = new ResourceSetImpl();
 		Resource rsrc = impl.getResource(URI.createFileURI(FILE), true);
 		
-		List<TraceabilityLink> tlinks = TraceabilityLinks.allDeclaredTraceabilityLinks(rsrc);
+		List<TraceabilityLink> tlinks = TraceabilityLinks.allDeclaredLinks(rsrc);
 		
 		for (TraceabilityLink tlink : tlinks) {
 			
