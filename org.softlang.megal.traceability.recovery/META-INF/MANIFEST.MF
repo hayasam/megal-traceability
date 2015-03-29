@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Megaltest
 Bundle-SymbolicName: org.softlang.megal.traceability.recovery
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: megaltest.Activator
+Bundle-Activator: org.softlang.megal.traceabilty.recovery.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.softlang.megal.language;bundle-version="1.0.0",

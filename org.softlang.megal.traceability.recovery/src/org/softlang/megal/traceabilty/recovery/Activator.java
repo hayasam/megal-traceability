@@ -1,4 +1,4 @@
-package megaltest;
+package org.softlang.megal.traceabilty.recovery;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
