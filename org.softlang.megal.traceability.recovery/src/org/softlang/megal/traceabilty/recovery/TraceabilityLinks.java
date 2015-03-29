@@ -1,8 +1,13 @@
 package org.softlang.megal.traceabilty.recovery;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.softlang.megal.Entity;
 import org.softlang.megal.Link;
 import org.softlang.megal.Links;
@@ -82,8 +87,49 @@ public class TraceabilityLinks {
 		List<TraceabilityLink> result = new ArrayList<TraceabilityLink>();
 		
 		for (Megamodel m : FluentIterable.from(r.getContents()).filter(Megamodel.class)) {
-			
+						
 			result.addAll(allDeclaredLinks(m));
+			
+		}
+		
+		return result;
+		
+	}
+	
+	static public List<TraceabilityLink> allDeclaredLinks (File file) {
+		
+		List<TraceabilityLink> result = new ArrayList<TraceabilityLink>();
+		
+		if (file.exists()) {
+			
+			String dirPath = file.getParent();
+			
+			ResourceSet impl = new ResourceSetImpl();
+			
+			Resource rsrc = impl.getResource(URI.createFileURI(file.getPath()), true);
+			
+			
+			for (Megamodel m : FluentIterable.from(rsrc.getContents()).filter(Megamodel.class)) {
+				
+				Iterable<Megamodel> imports = m.allImports();
+				
+				for (Megamodel imp:imports) {
+					
+					File impFile = new File(dirPath + "/" + imp.getName() + ".megal");
+					
+					System.out.println(imp.getImports());
+					
+					if (impFile.exists()) {
+						
+						impl.getResource(URI.createFileURI(impFile.getParent()),true);
+						
+					}
+					
+				}
+				
+				result.addAll(allDeclaredLinks(m));
+				
+			}
 			
 		}
 		
