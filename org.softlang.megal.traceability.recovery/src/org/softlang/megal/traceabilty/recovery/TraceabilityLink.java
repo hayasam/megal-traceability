@@ -29,7 +29,7 @@ public class TraceabilityLink {
 
 	public String toString () {
 		
-		return "(" + leftTarget + "," + rightTarget + ")";
+		return "( " + leftTarget + " , " + rightTarget + " )";
 		
 	}
 	

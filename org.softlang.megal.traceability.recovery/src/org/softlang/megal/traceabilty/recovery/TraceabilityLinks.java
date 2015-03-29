@@ -14,6 +14,11 @@ import org.softlang.megal.Relationship;
 
 import com.google.common.collect.FluentIterable;
 
+/**
+ * 
+ * @author maxmeffert
+ *
+ */
 public class TraceabilityLinks {
 
 	static public List<TraceabilityLink> allDeclaredTraceabilityLinks (Relationship r) {
@@ -30,8 +35,8 @@ public class TraceabilityLinks {
 			
 			for (Link rightLink : rightBindings) {
 				
-				TraceabilityLinkTarget leftTarget = new TraceabilityLinkTarget(left, new File(leftLink.getTo()));
-				TraceabilityLinkTarget rightTarget = new TraceabilityLinkTarget(right, new File(rightLink.getTo()));
+				TraceabilityLinkTarget leftTarget = new TraceabilityLinkTarget(left, leftLink.getTo());
+				TraceabilityLinkTarget rightTarget = new TraceabilityLinkTarget(right, rightLink.getTo());
 				
 				result.add(new TraceabilityLink(leftTarget, rightTarget));
 				

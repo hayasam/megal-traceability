@@ -1,18 +1,41 @@
 package org.softlang.megal.traceabilty.recovery;
 
+
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 
 import org.softlang.megal.Entity;
 
+/**
+ * 
+ * @author maxmeffert
+ *
+ */
 public class TraceabilityLinkTarget {
 
-	private Entity entity;
-	private File file;
+	static private String resolveURI (String uri) {
+		
+		if (uri.startsWith("workspace:/")) {
+			
+			uri = new File("..").toURI() + uri.substring("workspace:/".length());
+			
+			
+//			uri = new File(uri).getAbsolutePath();
+						
+		}
+				
+		return uri;
+		
+	}
 	
-	public TraceabilityLinkTarget (Entity entity, File file) {
+	private Entity entity;
+	private String uri;
+	
+	public TraceabilityLinkTarget (Entity entity, String uri) {
 		
 		this.entity = entity;
-		this.file = file;
+		this.uri = resolveURI(uri);
 		
 	}
 	
@@ -20,13 +43,13 @@ public class TraceabilityLinkTarget {
 		return entity;
 	}
 	
-	public File getFile() {
-		return file;
+	public String getFile() {
+		return uri;
 	}
 	
 	public String toString () {
 		
-		return file.toURI().toString();
+		return uri;
 		
 	}
 	
