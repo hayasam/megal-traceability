@@ -1,5 +1,7 @@
 package org.softlang.megal.traceabilty.recovery;
 
+import org.softlang.megal.Relationship;
+
 /**
  * 
  * @author maxmeffert
@@ -7,11 +9,13 @@ package org.softlang.megal.traceabilty.recovery;
  */
 public class TraceabilityLink {
 
+	private Relationship relationship;
 	private TraceabilityLinkTarget leftTarget;
 	private TraceabilityLinkTarget rightTarget;
 	
-	public TraceabilityLink (TraceabilityLinkTarget leftTarget, TraceabilityLinkTarget rightTarget) {
+	public TraceabilityLink (Relationship relationship, TraceabilityLinkTarget leftTarget, TraceabilityLinkTarget rightTarget) {
 		
+		this.relationship = relationship;
 		this.leftTarget = leftTarget;
 		this.rightTarget = rightTarget;
 		
@@ -27,7 +31,7 @@ public class TraceabilityLink {
 
 	public String toString () {
 		
-		return "( " + leftTarget + " , " + rightTarget + " )";
+		return relationship.getType().getName() + "('" + leftTarget + "','" + rightTarget + "')";
 		
 	}
 	

@@ -5,8 +5,10 @@ X : Artifact
 Y : Artifact
 Z : Artifact
 X correspondsTo Y
-X correspondsT Z
+X correspondsTo Z
+Y correspondsTo Z
+Z correspondsTo Y
 
 X = "workspace:/org.softlang.megal.traceability.recovery/testfiles/X.txt"
-X = "workspace:/org.softlang.megal.traceability.recovery/testfiles/Y.txt"
+Z = "workspace:/org.softlang.megal.traceability.recovery/testfiles/Z.txt"
 Y = "workspace:/org.softlang.megal.traceability.recovery/testfiles/Y.txt"

@@ -1,7 +1,5 @@
 package org.softlang.megal.traceabilty.recovery;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
@@ -47,16 +45,20 @@ public class Main {
 		
 	}
 	
-	static public void main (String[] args) throws IOException {
+	static public void main (String[] args) {
 		
 		setupMegaL();
-				
-		ResourceSet impl = new ResourceSetImpl();
-		Resource rsrc = impl.getResource(URI.createFileURI(FILE), true);
 		
-		List<TraceabilityLink> tlinks = TraceabilityLinks.allDeclaredLinks(rsrc);
+		ResourceSet impl = new ResourceSetImpl();
+		Resource rsrc1 = impl.getResource(URI.createFileURI("./testfiles/Prelude.megal"), true);
+		Resource rsrc2 = impl.getResource(URI.createFileURI(FILE), true);
+
+		
+		List<TraceabilityLink> tlinks = TraceabilityLinks.allDeclaredLinks(rsrc2);
 		
 		for (TraceabilityLink tlink : tlinks) {
+			
+			
 			
 			System.out.println(tlink);
 			

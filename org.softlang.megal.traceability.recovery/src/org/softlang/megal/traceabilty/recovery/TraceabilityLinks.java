@@ -41,7 +41,7 @@ public class TraceabilityLinks {
 				TraceabilityLinkTarget leftTarget = new TraceabilityLinkTarget(left, leftLink.getTo());
 				TraceabilityLinkTarget rightTarget = new TraceabilityLinkTarget(right, rightLink.getTo());
 				
-				result.add(new TraceabilityLink(leftTarget, rightTarget));
+				result.add(new TraceabilityLink(r, leftTarget, rightTarget));
 				
 			}
 			
