@@ -1,13 +1,27 @@
 model Test
 import Prelude
 
+
+XLang : Language
+YLang : Language
+ZLang : Language
+
+
 X : Artifact
+X elementOf XLang
+
 Y : Artifact
+Y elementOf YLang
+
 Z : Artifact
+Z elementOf ZLang
+
+
 X correspondsTo Y
 X correspondsTo Z
 Y correspondsTo Z
 Z correspondsTo Y
+
 
 X = "workspace:/org.softlang.megal.traceability.recovery/testfiles/X.txt"
 Z = "workspace:/org.softlang.megal.traceability.recovery/testfiles/Z.txt"

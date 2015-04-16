@@ -8,7 +8,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.softlang.megal.Entity;
 import org.softlang.megal.MegalPackage;
+import org.softlang.megal.Relationship;
 import org.softlang.megal.evaluation.MegalFactoryEval;
 import org.softlang.megal.language.MegalStandaloneSetup;
 
@@ -63,6 +65,16 @@ public class Main {
 		for (TraceabilityLink tlink : tlinks) {
 			
 			System.out.println(tlink);
+			
+			Entity left = tlink.getLeftTarget().getEntity();
+			
+			for (Entity r : TraceabilityLinks.isElementOf(left).filter(Entity.class)) {
+				
+				System.out.println(r);
+				
+			}
+			
+			
 			
 		}
 

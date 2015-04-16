@@ -96,47 +96,37 @@ public class TraceabilityLinks {
 		
 	}
 	
-	static public List<TraceabilityLink> allDeclaredLinks (File file) {
-		
-		List<TraceabilityLink> result = new ArrayList<TraceabilityLink>();
-		
-		if (file.exists()) {
-			
-			String dirPath = file.getParent();
-			
-			ResourceSet impl = new ResourceSetImpl();
-			
-			Resource rsrc = impl.getResource(URI.createFileURI(file.getPath()), true);
-			
-			
-			for (Megamodel m : FluentIterable.from(rsrc.getContents()).filter(Megamodel.class)) {
-				
-				Iterable<Megamodel> imports = m.allImports();
-				
-				for (Megamodel imp:imports) {
-					
-					File impFile = new File(dirPath + "/" + imp.getName() + ".megal");
-					
-					System.out.println(imp.getImports());
-					
-					if (impFile.exists()) {
-						
-						impl.getResource(URI.createFileURI(impFile.getParent()),true);
-						
-					}
-					
-				}
-				
-				result.addAll(allDeclaredLinks(m));
-				
-			}
-			
-		}
-		
-		return result;
+	static public FluentIterable<Relationship> allRelationshipsWhereLeft (Entity e) {
+
+		return FluentIterable
+			.from(e.megamodel().getDeclarations())
+			.filter(Relationship.class)
+			.filter(r -> r.getLeft().equals(e));
 		
 	}
 	
+	static public FluentIterable<Entity> isElementOf (Entity e) {
+		
+		FluentIterable<Relationship> rs = TraceabilityLinks.allRelationshipsWhereLeft(e)
+											.filter(r -> r.getType().getName().equals("elementOf"));
+		
+		List<Entity> es = new ArrayList<Entity>();
+		
+		for (Relationship r:rs) {
+			
+			es.add(r.getRight());
+			
+		}
+		
+		return FluentIterable.from(es);
+		
+	}
+	
+	/**
+	 * 
+	 * @param tlinks
+	 * @return
+	 */
 	static public List<TraceabilityLink> inferFragmentLinks (List<TraceabilityLink> tlinks) {
 		
 		return tlinks;
