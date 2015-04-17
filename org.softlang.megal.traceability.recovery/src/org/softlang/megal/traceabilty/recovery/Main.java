@@ -60,7 +60,7 @@ public class Main {
 		
 		Resource rsrc = impl.getResource(URI.createFileURI(FILE), true);
 		
-		List<TraceabilityLink> tlinks = TraceabilityLinks.allDeclaredLinks(rsrc);
+		Iterable<TraceabilityLink> tlinks = TraceabilityLinks.getTraceabilityLinks(rsrc);
 		
 		for (TraceabilityLink tlink : tlinks) {
 			
@@ -68,7 +68,7 @@ public class Main {
 			
 			Entity left = tlink.getLeftTarget().getEntity();
 			
-			for (Entity r : TraceabilityLinks.isElementOf(left).filter(Entity.class)) {
+			for (Entity r : TraceabilityLinks.getElementOfWhereLeft(left).filter(Entity.class)) {
 				
 				System.out.println(r);
 				
