@@ -1,11 +1,7 @@
 package org.softlang.megal.traceabilty.recovery;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.eclipse.emf.ecore.resource.Resource;
 import org.softlang.megal.Entity;
 import org.softlang.megal.Link;
@@ -42,7 +38,19 @@ public class TraceabilityLinks {
 	
 	static public FluentIterable<Relationship> getAllRelationshipsWhereLeft (String name, Entity e) {
 		
-		return getAllRelationships(e.megamodel(), name);
+		return getAllRelationships(e.megamodel(), name).filter(r -> r.getLeft().equals(e));
+		
+	}
+	
+	static public FluentIterable<Relationship> getAllRelationshipWhereRight (Entity e) {
+		
+		return getAllRelationships(e.megamodel()).filter(r -> r.getRight().equals(e));
+		
+	}
+	
+	static public FluentIterable<Relationship> getAllRelationshipWhereRight (String name, Entity e) {
+		
+		return getAllRelationships(e.megamodel(), name).filter(r -> r.getRight().equals(e));
 		
 	}
 	
@@ -52,11 +60,24 @@ public class TraceabilityLinks {
 				
 	}
 	
+	static public FluentIterable<Relationship> getElementOfWhereRight (Entity e) {
+		
+		return getAllRelationshipWhereRight("elementOf", e);
+		
+	}
+	
 	static public FluentIterable<Entity> getLanguageOf (Entity e) {
 		
 		return getElementOfWhereLeft(e)
 				.filter(elementOf -> elementOf.getRight().getName().equals("Language"))
 				.transform(elementOf -> elementOf.getRight());
+		
+	}
+	
+	static public FluentIterable<Entity> getElementOf (Entity e) {
+		
+		return getElementOfWhereRight(e)
+				.transform(elementOf -> elementOf.getLeft());
 		
 	}
 	
@@ -74,10 +95,20 @@ public class TraceabilityLinks {
 			
 			for (Link right : getLinksOf(r.getRight())) {
 				
-				TraceabilityLinkTarget leftTarget = new TraceabilityLinkTarget(r.getLeft(), left.getTo());
-				TraceabilityLinkTarget rightTarget = new TraceabilityLinkTarget(r.getRight(), right.getTo());
+				FluentIterable<Entity> lLangs = getLanguageOf(r.getLeft());
+				FluentIterable<Entity> rLangs = getLanguageOf(r.getRight());
 				
-				links.add(new TraceabilityLink(r, leftTarget, rightTarget));
+				if (0 < lLangs.size() && 0 < rLangs.size()) {
+					
+					String lLang = lLangs.first().get().getName();
+					String rLang = rLangs.first().get().getName();
+					
+					TraceabilityLinkTarget lTarget = new TraceabilityLinkTarget(r.getLeft(), left.getTo());
+					TraceabilityLinkTarget rTarget = new TraceabilityLinkTarget(r.getRight(), right.getTo());
+									
+					links.add(new TraceabilityLink(r, lTarget, rTarget));
+					
+				}
 				
 			}
 			
@@ -118,91 +149,6 @@ public class TraceabilityLinks {
 	static public FluentIterable<TraceabilityLink> getTraceabilityLinks (Resource r) {
 		
 		return getTraceabilityLinks(FluentIterable.from(r.getContents()).filter(Megamodel.class));
-		
-	}
-	
-	/**
-	 * Searches a given MegaL Relationship for all declared traceability links, that is defined entities with bound artifacts.
-	 * 
-	 * @param r
-	 * @return
-	 */
-	static public FluentIterable<TraceabilityLink> allDeclaredLinks (Relationship r) {
-		
-		List<TraceabilityLink> result = new ArrayList<TraceabilityLink>();
-		
-		Entity left = r.getLeft();
-		Entity right = r.getRight();
-		
-		Iterable<Link> leftBindings = Links.allBindings(left.megamodel(), left);
-		Iterable<Link> rightBindings = Links.allBindings(r.megamodel(), right);
-		
-		for (Link leftLink : leftBindings) {
-			
-			for (Link rightLink : rightBindings) {
-				
-				TraceabilityLinkTarget leftTarget = new TraceabilityLinkTarget(left, leftLink.getTo());
-				TraceabilityLinkTarget rightTarget = new TraceabilityLinkTarget(right, rightLink.getTo());
-				
-				result.add(new TraceabilityLink(r, leftTarget, rightTarget));
-				
-			}
-			
-		}
-		
-		return FluentIterable.from(result);
-		
-	}
-	
-	static public FluentIterable<TraceabilityLink> allDeclaredLinks (Iterable<Relationship> rs) {
-		
-		List<TraceabilityLink> tls = new ArrayList<TraceabilityLink>();
-		
-		rs.forEach(r -> allDeclaredLinks(r).forEach(tl -> tls.add(tl)));
-		
-		return FluentIterable.from(tls);
-		
-	}
-		
-	/**
-	 * Searches a given MegaL Megamodel for all declared traceability links, that is defined entities with bound artifacts.
-	 * 
-	 * @param m
-	 * @return
-	 */
-	static public FluentIterable<TraceabilityLink> allDeclaredLinks (Megamodel m) {
-				
-		return allDeclaredLinks(FluentIterable.from(m.getDeclarations()).filter(Relationship.class));
-		
-	}
-		
-	/**
-	 * Searches a given Ecore resource for all declared traceability links, that is defined entities with bound artifacts.
-	 * 
-	 * @param r
-	 * @return
-	 */
-	static public List<TraceabilityLink> allDeclaredLinks (Resource r) {
-		
-		List<TraceabilityLink> result = new ArrayList<TraceabilityLink>();
-		
-		FluentIterable
-			.from(r.getContents())
-			.filter(Megamodel.class)
-			.forEach(m -> allDeclaredLinks(m).forEach(tl -> result.add(tl)));
-		
-		return result;
-		
-	}
-		
-	/**
-	 * 
-	 * @param tlinks
-	 * @return
-	 */
-	static public List<TraceabilityLink> inferFragmentLinks (List<TraceabilityLink> tlinks) {
-		
-		return tlinks;
 		
 	}
 	
